@@ -1,6 +1,6 @@
 {
   "name": "react-native-tab-view-easy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "react-native-tab-view-easy",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
