@@ -11,7 +11,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import com.reactnativetabvieweasy.TabViewEasyPackage;
+// import com.reactnativetabvieweasy.TabViewEasyPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for TabViewEasyExample:
           // packages.add(new MyReactNativePackage());
-          packages.add(new TabViewEasyPackage());
+//           packages.add(new TabViewEasyPackage());
 
           return packages;
         }
