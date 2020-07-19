@@ -1,6 +1,6 @@
 # react-native-tab-view-easy
 
-react-native-tab-view-easy
+A cross-platform Tab View component for React Native based on `react-native-tab-view` with easier syntax
 
 ## Installation
 
@@ -12,6 +12,16 @@ OR
 npm install react-native-tab-view-easy
 ```
 
+
+Now we need to install `react-native-tab-view`, `react-native-gesture-handler` and `react-native-reanimated`
+
+```sh
+yarn add react-native-tab-view react-native-gesture-handler react-native-reanimated
+```
+OR
+```sh
+npm install react-native-tab-view react-native-gesture-handler react-native-reanimated
+```
 ## Usage
 
 ```js

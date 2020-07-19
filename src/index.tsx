@@ -57,7 +57,7 @@ export const TabView: React.FC = (props) => {
   );
 };
 
-export type RouteProp = {
+export type TabProps = {
   key?: string;
   icon?: string;
   title?: string;
@@ -66,6 +66,6 @@ export type RouteProp = {
   testID?: string;
 };
 
-export const Tab: React.FC<RouteProp> = (props) => {
+export const Tab: React.FC<TabProps> = (props) => {
   return <View>{props.children}</View>;
 };
