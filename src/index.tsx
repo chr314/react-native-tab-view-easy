@@ -40,6 +40,12 @@ export const TabView: React.FC = (props) => {
   }, [props.children]);
 
   const renderScene = ({ route }: { route: any }) => {
+    if (
+      Math.abs(index - routes.findIndex((item) => item.key === route.key)) > 2
+    ) {
+      return <View />;
+    }
+
     if (scenes.current[route.key]) {
       return scenes.current[route.key];
     }
