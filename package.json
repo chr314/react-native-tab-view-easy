@@ -1,7 +1,7 @@
 {
   "name": "react-native-tab-view-easy",
   "version": "0.1.2",
-  "description": "react-native-tab-view-easy",
+  "description": "A cross-platform Tab View component for React Native based on react-native-tab-view with easier syntax",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -32,7 +32,10 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native-tab-view",
+    "react-native-tab",
+    "tabs"
   ],
   "repository": "https://github.com/chr314/react-native-tab-view-easy",
   "author": "Christoforos Aslanov <christoforos@christoforos.dev> (https://github.com/chr314)",
