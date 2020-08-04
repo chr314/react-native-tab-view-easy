@@ -73,5 +73,5 @@ export type TabProps = {
 };
 
 export const Tab: React.FC<TabProps> = (props) => {
-  return <View>{props.children}</View>;
+  return <React.Fragment>{props.children}</React.Fragment>;
 };
