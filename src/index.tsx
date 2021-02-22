@@ -1,14 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import { TabView as TabViewOriginal, Route } from 'react-native-tab-view';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, StyleProp, ViewStyle } from 'react-native';
+import type { SceneRendererProps } from 'react-native-tab-view';
 
 const initialLayout = { width: Dimensions.get('window').width };
 
 interface ScenesMap {
-  [key: string]: React.ReactElement;
+  [key: string]: ReactNode;
 }
 
-export const TabView: React.FC = (props) => {
+export type TabViewProps = {
+  enableOptimizations?: boolean;
+  onIndexChange?: (index: number) => void;
+  renderTabBar?: (props: SceneRendererProps) => React.ReactNode;
+  tabBarPosition?: 'top' | 'bottom';
+  initialLayout?: {
+    width?: number;
+    height?: number;
+  };
+  lazy?: boolean;
+  lazyPreloadDistance?: number;
+  removeClippedSubviews?: boolean;
+  sceneContainerStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
+};
+
+export const TabView = (props: TabViewProps) => {
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState<Route[]>([]);
   const scenes = useRef<ScenesMap>({});
@@ -18,9 +36,7 @@ export const TabView: React.FC = (props) => {
       let newRoutes: Route[] = [];
       React.Children.forEach(props.children, (children, tabIndex) => {
         if (React.isValidElement(children) && children.type === Tab) {
-          const newKey = children.props.key
-            ? children.props.key
-            : 'tab_' + tabIndex;
+          const newKey = children.props.key || 'tab_' + tabIndex;
 
           scenes.current[newKey] = children;
 
@@ -41,6 +57,7 @@ export const TabView: React.FC = (props) => {
 
   const renderScene = ({ route }: { route: any }) => {
     if (
+      props.enableOptimizations &&
       Math.abs(index - routes.findIndex((item) => item.key === route.key)) > 2
     ) {
       return <View />;
@@ -70,8 +87,9 @@ export type TabProps = {
   accessible?: boolean;
   accessibilityLabel?: string;
   testID?: string;
+  children: ReactNode;
 };
 
-export const Tab: React.FC<TabProps> = (props) => {
+export const Tab = (props: TabProps) => {
   return <React.Fragment>{props.children}</React.Fragment>;
 };

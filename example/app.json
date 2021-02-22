@@ -1,4 +1,22 @@
 {
-  "name": "TabViewEasyExample",
-  "displayName": "TabViewEasy Example"
+  "name": "react-native-tab-view-easy-example",
+  "displayName": "TabViewEasy Example",
+  "expo": {
+    "name": "react-native-tab-view-easy-example",
+    "slug": "react-native-tab-view-easy-example",
+    "description": "Example app for react-native-tab-view-easy",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
 }
