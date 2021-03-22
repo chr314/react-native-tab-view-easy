@@ -40,7 +40,7 @@ import { TabView, Tab } from 'react-native-tab-view-easy';
 </TabView>
 ```
 
-##[API reference](https://github.com/satya164/react-native-tab-view#api-reference)
+## [API reference](https://github.com/satya164/react-native-tab-view#api-reference)
 
 ## License
 
