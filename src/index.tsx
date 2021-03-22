@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
-import { TabView as TabViewOriginal, Route } from 'react-native-tab-view';
-import { View, Dimensions, StyleProp, ViewStyle } from 'react-native';
-import type { SceneRendererProps } from 'react-native-tab-view';
-
-const initialLayout = { width: Dimensions.get('window').width };
+import {
+  TabView as TabViewOriginal,
+  Route,
+  TabViewProps as TabViewPropsOriginal,
+} from 'react-native-tab-view';
+import { View, useWindowDimensions } from 'react-native';
 
 interface ScenesMap {
   [key: string]: ReactNode;
@@ -11,25 +12,18 @@ interface ScenesMap {
 
 export type TabViewProps = {
   enableOptimizations?: boolean;
-  onIndexChange?: (index: number) => void;
-  renderTabBar?: (props: SceneRendererProps) => React.ReactNode;
-  tabBarPosition?: 'top' | 'bottom';
-  initialLayout?: {
-    width?: number;
-    height?: number;
-  };
-  lazy?: boolean;
-  lazyPreloadDistance?: number;
-  removeClippedSubviews?: boolean;
-  sceneContainerStyle?: StyleProp<ViewStyle>;
-  style?: StyleProp<ViewStyle>;
-  children?: ReactNode;
-};
+  children: ReactNode;
+} & Omit<
+  Partial<TabViewPropsOriginal<Route>>,
+  'navigationState' | 'renderScene' | 'onIndexChange'
+>;
 
 export const TabView = (props: TabViewProps) => {
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState<Route[]>([]);
   const scenes = useRef<ScenesMap>({});
+
+  const layout = useWindowDimensions();
 
   useEffect(() => {
     if (props.children) {
@@ -55,7 +49,7 @@ export const TabView = (props: TabViewProps) => {
     }
   }, [props.children]);
 
-  const renderScene = ({ route }: { route: any }) => {
+  const renderScene = ({ route }: { route: Route }) => {
     if (
       props.enableOptimizations &&
       Math.abs(index - routes.findIndex((item) => item.key === route.key)) > 2
@@ -69,15 +63,19 @@ export const TabView = (props: TabViewProps) => {
     return null;
   };
 
-  return (
-    <TabViewOriginal
-      {...props}
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-    />
-  );
+  if (routes.length) {
+    return (
+      // @ts-ignore
+      <TabViewOriginal
+        {...props}
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={props.initialLayout || { width: layout.width }}
+      />
+    );
+  }
+  return null;
 };
 
 export type TabProps = {
@@ -91,5 +89,5 @@ export type TabProps = {
 };
 
 export const Tab = (props: TabProps) => {
-  return <React.Fragment>{props.children}</React.Fragment>;
+  return <>{props.children}</>;
 };

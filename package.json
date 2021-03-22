@@ -4,7 +4,7 @@
   "description": "A cross-platform Tab View component for React Native based on react-native-tab-view with easier syntax",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -35,6 +35,7 @@
     "react-native",
     "ios",
     "android",
+    "react-native-web",
     "react-native-tab-view",
     "react-native-tab",
     "tabs"
@@ -66,16 +67,15 @@
     "prettier": "^2.0.5",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-tab-view": "^3.0.0",
     "react-native-builder-bob": "^0.17.1",
     "release-it": "^14.2.2",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
-  },
-  "dependencies": {
-    "react-native-tab-view": "^2.15.2"
+    "react-native": "*",
+    "react-native-tab-view": "*"
   },
   "jest": {
     "preset": "react-native",

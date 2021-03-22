@@ -13,14 +13,14 @@ npm install react-native-tab-view-easy
 ```
 
 
-Now we need to install `react-native-tab-view`, `react-native-gesture-handler` and `react-native-reanimated`
+Now we need to install `react-native-tab-view` and `react-native-pager-view`
 
 ```sh
-yarn add react-native-tab-view react-native-gesture-handler react-native-reanimated
+yarn add react-native-tab-view react-native-pager-view
 ```
 OR
 ```sh
-npm install react-native-tab-view react-native-gesture-handler react-native-reanimated
+npm install react-native-tab-view react-native-pager-view
 ```
 ## Usage
 
@@ -39,6 +39,8 @@ import { TabView, Tab } from 'react-native-tab-view-easy';
   </Tab>
 </TabView>
 ```
+
+##[API reference](https://github.com/satya164/react-native-tab-view#api-reference)
 
 ## License
 
