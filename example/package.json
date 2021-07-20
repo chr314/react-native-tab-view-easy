@@ -16,7 +16,7 @@
     "expo-splash-screen": "~0.8.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "0.63.4",
+    "react-native": "0.64.1",
     "react-native-pager-view": "^5.1.2",
     "react-native-tab-view": "^3.0.0",
     "react-native-unimodules": "~0.12.0",
